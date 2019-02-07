@@ -61,7 +61,6 @@ const checkToken = (req, res, next) => {
     }
 }
 
-
 //This is a protected route 
 router.get('/data', checkToken, (req, res) => {
     //verify the JWT token generated for the user
@@ -72,11 +71,17 @@ router.get('/data', checkToken, (req, res) => {
             res.sendStatus(403);
         } else {
             //If token is successfully verified, we can send the autorized data 
-            res.json({
-                message: 'Successful log in',
-                authorizedData
-            });
-            console.log('SUCCESS: Connected to protected route');
+            console.log(authorizedData)
+            if (authorizedData.user.role !== "teacher") {
+                res.send("Authenticated but not authorized")
+            }
+            else {
+                res.json({
+                    message: 'Successful log in',
+                    authorizedData
+                });
+                console.log('SUCCESS: Connected to protected route');
+            }
         }
     })
 });
