@@ -4,7 +4,7 @@ module.exports = {
     firstName: 'Jon',
     lastName: 'Doe',
     dob: '12/11/1991',
-    role:'teacher',
+    role:'student',
     email: 'user@gmail.com',
     address: {
         street: '555 Bayshore Blvd',
