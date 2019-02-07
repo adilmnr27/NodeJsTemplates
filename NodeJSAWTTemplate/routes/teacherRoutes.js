@@ -70,7 +70,6 @@ router.get('/data', checkToken, (req, res) => {
             console.log('ERROR: Could not connect to the protected route');
             res.sendStatus(403);
         } else {
-            //If token is successfully verified, we can send the autorized data 
             console.log(authorizedData)
             if (authorizedData.user.role !== "teacher") {
                 res.send("Authenticated but not authorized")
