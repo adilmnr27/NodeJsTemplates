@@ -85,7 +85,5 @@ router.get('/data', checkToken, (req, res) => {
     })
 });
 
-
-
 //exporting the router object so that we can import it in app.js
 module.exports = router;

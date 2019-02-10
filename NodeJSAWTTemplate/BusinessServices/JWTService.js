@@ -58,7 +58,6 @@ module.exports = function () {
         } catch (error) {
             console.log(error.message);
             return false;
-
         }
 
     };
@@ -73,8 +72,6 @@ module.exports = function () {
         }
 
     };
-
-
 
     return jwtService;
 
