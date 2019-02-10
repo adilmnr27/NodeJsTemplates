@@ -9,7 +9,10 @@
 *With strict mode, you can not, for example, use undeclared variables.
 */
 "use strict"; 
-
+//Reading the environment variables
+// https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786
+const dotenv = require('dotenv');
+dotenv.config();
 // we will use the require function to load the module
 const express = require('express') //express is the name of module which returns a function .
 const app = express(); // object created of type Express
@@ -19,6 +22,8 @@ const teacher = require('./routes/teacherRoutes.js');// getting the router objec
 const bodyParser = require('body-parser');
 const cors = require("cors"); //to solve the  cross-orgins problem.
 //app.use(express.json()); // To convert the data coming into json.
+
+
 
 
 // Enable CORS preflight across the board.

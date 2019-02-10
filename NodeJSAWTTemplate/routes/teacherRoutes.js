@@ -6,6 +6,9 @@ const router = express.Router();
 const jwt = require('jsonwebtoken'); //For token management
 const teacher = require('../models/dummyTeacher');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 //indirectly the url is portNumber:/api/teacher/login
 router.post('/login', (req, res) => {
     const username = req.body.username;

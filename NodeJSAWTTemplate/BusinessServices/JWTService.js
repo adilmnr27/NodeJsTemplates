@@ -1,5 +1,8 @@
 "use strict";
 const jwt = require('jsonwebtoken'); //For token management
+const dotenv = require('dotenv');
+dotenv.config();
+const secretKey = process.env.JWT_SECRET_KEY;
 module.exports = function () {
     var jwtService = {};
 
@@ -10,7 +13,7 @@ module.exports = function () {
      */
     jwtService.generateToken = function (user) {
         /*
-        jwt.sign({ user }, 'privatekey', { expiresIn: '1h' }, (err, token) => {
+        jwt.sign({ user }, secretKey, { expiresIn: '1h' }, (err, token) => {
             if (err) {
                 console.log(err);
             }
@@ -19,7 +22,7 @@ module.exports = function () {
         //TODO need to find a solution for async methods
         */
         try {
-            const token = jwt.sign({ user }, 'privateKey', { expiresIn: '1h' });
+            const token = jwt.sign({ user }, secretKey, { expiresIn: '1h' });
             return token;
         } catch (err) {
             console.log(err);
@@ -60,7 +63,7 @@ module.exports = function () {
 
         /*
         //verify the jwt token generated for the user
-        jwt.verify(token, 'privatekey', (err, authorizedData) => {
+        jwt.verify(token, secretKey, (err, authorizedData) => {
             if (err) {
                 //If error send Forbidden (403)
                 console.log('ERROR: Could not connect to the protected route');
@@ -72,7 +75,7 @@ module.exports = function () {
         })
         */
         try {
-            const authorizedData = jwt.verify(token, 'privateKey');
+            const authorizedData = jwt.verify(token, secretKey);
             return authorizedData;
         } catch (error) {
             console.log(error.message);
