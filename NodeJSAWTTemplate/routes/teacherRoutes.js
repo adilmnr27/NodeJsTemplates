@@ -43,7 +43,13 @@ router.post('/signup', (req, res) => {
     res.send("Your details are + " + JSON.stringify(req.body));
 })
 
-//Check to make sure header is not undefined, if so, return Forbidden (403)
+/**
+ * Check to make sure header is not undefined
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns forbidden (403) if header is undefined
+ */
 const checkToken = (req, res, next) => {
     const header = req.headers['authorization'];
 
