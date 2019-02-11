@@ -12,15 +12,6 @@ module.exports = function () {
      * @returns token generated if there are no errors.
      */
     jwtService.generateToken = function (user) {
-        /*
-        jwt.sign({ user }, secretKey, { expiresIn: '1h' }, (err, token) => {
-            if (err) {
-                console.log(err);
-            }
-            return (token);
-        });
-        //TODO need to find a solution for async methods
-        */
         try {
             const token = jwt.sign({ user }, secretKey, { expiresIn: '1h' });
             return token;
@@ -35,7 +26,6 @@ module.exports = function () {
      * @param {string} authorizationRole The role against which the authorization should be done
      * @returns false if authentication or authorization fails else returns true 
      */
-
     jwtService.verifyUser = function (token, authorizationRole) {
         if (!this.authenticateUser(token)) {
             console.log("Authentication failed");
@@ -52,28 +42,12 @@ module.exports = function () {
         return true;
     };
 
-
-
     /**
      * Authenticates the user but does not check the authorization
      * @param {string} token the token which the user has sent which needs to be authenticated
      * @returns returns false if authentication fails and payload if authentication succeeds 
      */
     jwtService.authenticateUser = function (token) {
-
-        /*
-        //verify the jwt token generated for the user
-        jwt.verify(token, secretKey, (err, authorizedData) => {
-            if (err) {
-                //If error send Forbidden (403)
-                console.log('ERROR: Could not connect to the protected route');
-                res.sendStatus(403);
-            } else {
-                return authorizedData;
-
-            }
-        })
-        */
         try {
             const authorizedData = jwt.verify(token, secretKey);
             return authorizedData;
