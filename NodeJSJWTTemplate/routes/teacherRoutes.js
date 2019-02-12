@@ -13,7 +13,7 @@ dotenv.config();
 router.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    if (username !== teacher.username && password !== teacher.password) {
+    if (username !== teacher.username || password !== teacher.password) {
         console.log("incorrect credentials")
         res.send("please enter correct credentials");
     }
